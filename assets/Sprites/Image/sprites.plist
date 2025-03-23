@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+	<dict>
+		<key>frames</key>
+		<dict>
+			<key>ezgif.com-crop (1).png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{216,69},{51,50}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false/>
+				<key>sourceColorRect</key>
+				<string>{{11,13},{51,50}}</string>
+				<key>sourceSize</key>
+				<string>{73,77}</string>
+			</dict>
+
+			<key>ezgif.com-crop (2).png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{214,173},{82,64}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false/>
+				<key>sourceColorRect</key>
+				<string>{{16,0},{82,64}}</string>
+				<key>sourceSize</key>
+				<string>{100,81}</string>
+			</dict>
+
+			<key>ezgif.com-crop (3).png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{212,0},{90,68}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false/>
+				<key>sourceColorRect</key>
+				<string>{{10,0},{90,68}}</string>
+				<key>sourceSize</key>
+				<string>{100,81}</string>
+			</dict>
+
+			<key>ezgif.com-crop (4).png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{119,0},{92,73}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false/>
+				<key>sourceColorRect</key>
+				<string>{{8,3},{92,73}}</string>
+				<key>sourceSize</key>
+				<string>{100,81}</string>
+			</dict>
+
+			<key>ezgif.com-crop (5).png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{118,173},{95,76}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false/>
+				<key>sourceColorRect</key>
+				<string>{{5,0},{95,76}}</string>
+				<key>sourceSize</key>
+				<string>{100,81}</string>
+			</dict>
+
+			<key>ezgif.com-crop (6).png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{118,91},{97,81}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false/>
+				<key>sourceColorRect</key>
+				<string>{{3,0},{97,81}}</string>
+				<key>sourceSize</key>
+				<string>{100,81}</string>
+			</dict>
+
+			<key>ezgif.com-crop (7).png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{0,91},{117,90}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false/>
+				<key>sourceColorRect</key>
+				<string>{{0,0},{117,90}}</string>
+				<key>sourceSize</key>
+				<string>{118,90}</string>
+			</dict>
+
+			<key>ezgif.com-crop (8).png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{0,0},{118,90}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false/>
+				<key>sourceColorRect</key>
+				<string>{{0,0},{118,90}}</string>
+				<key>sourceSize</key>
+				<string>{118,90}</string>
+			</dict>
+
+			<key>ezgif.com-crop (9).png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{0,182},{100,71}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false/>
+				<key>sourceColorRect</key>
+				<string>{{0,0},{100,71}}</string>
+				<key>sourceSize</key>
+				<string>{101,86}</string>
+			</dict>
+
+			<key>ezgif.com-crop.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{216,120},{33,27}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false/>
+				<key>sourceColorRect</key>
+				<string>{{21,21},{33,27}}</string>
+				<key>sourceSize</key>
+				<string>{73,77}</string>
+			</dict>
+
+		</dict>
+
+		<key>metadata</key>
+		<dict>
+			<key>format</key>
+			<integer>2</integer>
+			<key>size</key>
+			<string>{512,256}</string>
+			<key>textureFileName</key>
+			<string>sprites.png</string>
+			</dict>
+		</dict>
+</plist>

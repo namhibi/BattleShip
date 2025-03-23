@@ -1,0 +1,34 @@
+{
+  "ver": "2.3.3",
+  "uuid": "a924340c-603a-4d1e-ab96-a089c4b67bad",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "platformSettings": {},
+  "subMetas": {
+    "zyro-image_01": {
+      "ver": "1.0.4",
+      "uuid": "f9e57b97-2fcd-4399-88c0-077e1a7a3504",
+      "rawTextureUuid": "a924340c-603a-4d1e-ab96-a089c4b67bad",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 0,
+      "trimY": 0,
+      "width": 404,
+      "height": 462,
+      "rawWidth": 404,
+      "rawHeight": 462,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

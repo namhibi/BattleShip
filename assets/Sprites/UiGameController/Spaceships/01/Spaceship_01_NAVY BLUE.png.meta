@@ -1,0 +1,34 @@
+{
+  "ver": "2.3.3",
+  "uuid": "ad4a1a4a-fcd8-4b6f-9bbf-d7c868e2bb9c",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "platformSettings": {},
+  "subMetas": {
+    "Spaceship_01_NAVY BLUE": {
+      "ver": "1.0.4",
+      "uuid": "f29094d8-7a34-4f70-8495-904c10f182a8",
+      "rawTextureUuid": "ad4a1a4a-fcd8-4b6f-9bbf-d7c868e2bb9c",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 51,
+      "trimY": 114,
+      "width": 398,
+      "height": 272,
+      "rawWidth": 500,
+      "rawHeight": 500,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

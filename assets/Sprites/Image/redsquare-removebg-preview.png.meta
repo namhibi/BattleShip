@@ -1,0 +1,34 @@
+{
+  "ver": "2.3.3",
+  "uuid": "e7666ab7-f6a5-4337-b6c9-843d48955f04",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "platformSettings": {},
+  "subMetas": {
+    "redsquare-removebg-preview": {
+      "ver": "1.0.4",
+      "uuid": "e6f20124-8313-4da3-bf24-5cd02a4dc145",
+      "rawTextureUuid": "e7666ab7-f6a5-4337-b6c9-843d48955f04",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": -1,
+      "offsetY": 1,
+      "trimX": 7,
+      "trimY": 7,
+      "width": 207,
+      "height": 187,
+      "rawWidth": 223,
+      "rawHeight": 203,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}
