@@ -1,6 +1,7 @@
 const Emitter = require("EventEmitter");
 var StateMachine = require("javascript-state-machine");
 const EVENT_NAME = require("NAME_EVENT");
+const MESSAGE = require("MessageData");
 
 cc.Class({
     extends: cc.Component,
@@ -30,7 +31,7 @@ cc.Class({
         this.onAttack();
     },
 
-    clockOverTime() {
+    onOverTime() {
         let talkString = this.node.children[0].children[0].getComponent(
             cc.Label
         );
@@ -38,7 +39,8 @@ cc.Class({
             CB: "BOY IS OVER TIME",
             YT: "YOURS TURN HAS FINISHED",
         };
-        cc.tween(talkString.node)
+        this.tweenTalking && this.tweenTalking.stop();
+        this.tweenTalking = cc.tween(talkString.node)
             .call(() => {
                 talkString.string = arrayTalking.CB;
             })
@@ -63,7 +65,7 @@ cc.Class({
         talkString.string = "SHOOTING SHIP ENEMY";
     },
 
-    onFinal() {
+    onMissAttack() {
         let talkString = this.node.children[0].children[0].getComponent(
             cc.Label
         );
@@ -71,7 +73,8 @@ cc.Class({
             CB: "CHICKEN BOYS",
             YT: "YOURS TURN HAS FINISHED",
         };
-        cc.tween(talkString.node)
+        this.tweenTalking && this.tweenTalking.stop();
+        this.tweenTalking = cc.tween(talkString.node)
             .call(() => {
                 talkString.string = arrayTalking.CB;
             })
@@ -98,7 +101,8 @@ cc.Class({
             HASHIT: "U HAS HIT ENEMY SHIP",
             SA: "SHOOT AGAIN",
         };
-        cc.tween(talkString.node)
+        this.tweenTalking && this.tweenTalking.stop();
+        this.tweenTalking = cc.tween(talkString.node)
             .call(() => {
                 talkString.string = arrayTalking.GB;
             })
@@ -127,7 +131,8 @@ cc.Class({
                 GJ: "GOOD JOBS",
                 SA: "SHOOT AGAIN",
             };
-            cc.tween(talkString.node)
+            this.tweenTalking && this.tweenTalking.stop();
+            this.tweenTalking = cc.tween(talkString.node)
                 .call(() => {
                     talkString.string = arrayTalking.GB;
                 })
@@ -148,19 +153,41 @@ cc.Class({
         });
     },
 
+    loadMessage(messageList, callback){
+        let messageCmp = this.node.children[0].children[0].getComponent(cc.Label);
+        this.tweenTalking && this.tweenTalking.stop();
+        this.tweenTalking = cc.tween(talkString.node)
+        for(let index = 0; index < this.messageList.length; index ++){
+            if(index !=  this.messageList.length - 1){
+                this.tweenTalking
+                .call(() => {
+                    talkString.string = this.messageList[index];
+                })
+                .delay(1)
+            }else{
+                this.tweenTalking
+                .call(() => {
+                    talkString.string = this.messageList[index];
+                    callback && callback();
+                })
+            }
+        }
+    },
+
     changeStateShipFail() {
         this.onShipFail();
     },
 
     handleState(data) {
+        this.tweenTalking && this.tweenTalking.stop();
         cc.log("pre" + data);
         if (data === true) {
             this.onAttackToAttack();
         } else if (data === false) {
-            this.onFinal();
+            this.onMissAttack();
         } else if (data === undefined) {
             cc.log("pirate final");
-            this.clockOverTime();
+            this.onOverTime();
         }
     },
 

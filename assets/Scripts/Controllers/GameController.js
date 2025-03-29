@@ -11,8 +11,6 @@ cc.Class({
         mapPlayer: cc.Node,
         changeSceneNode: cc.Node,
         pirate: sp.Skeleton,
-        clockPlayer: cc.Label,
-        clockEnemy: cc.Label,
     },
 
     onLoad() {
@@ -110,6 +108,9 @@ cc.Class({
         this.mapPlayer.active = false;
         Emitter.instance.emit(EVENT_NAME.YOUR_TURN_PANEL);
         Emitter.instance.registerOnce(EVENT_NAME.YOUR_TURN_PANEL_DONE, () => {
+            Emitter.instance.emit(EVENT_NAME.COUNT_DOWN_CLOCK,()=>{
+                Emitter.instance.emit(EVENT_NAME.CHANGE_SCENE_CLOCK);
+            });
             this.mapEnemy.active = true;
             this.mapPlayer.active = true;
             this.pirate.node.active = true;
@@ -122,14 +123,15 @@ cc.Class({
 
     onChangePlayerScene() {
         cc.log("chuyen player");
-        Emitter.instance.registerOnce(EVENT_NAME.POSITION, (data) => {
+        this.callBackCheckPos = (data)=> {
             data.playerId = this.enemyId;
             let spine = this.pirate.node.getComponent(sp.Skeleton);
             spine.clearTracks();
             spine.setAnimation(0, "Attack_2", false);
             spine.addAnimation(0, "Idle", true);
             Emitter.instance.emit("checkTile", data);
-        });
+        }
+        Emitter.instance.registerOnce(EVENT_NAME.POSITION,  this.callBackCheckPos);
     },
 
     onEnterenemyScene() {
@@ -138,6 +140,9 @@ cc.Class({
         this.mapPlayer.active = false;
         Emitter.instance.emit(EVENT_NAME.ENEMY_TURN_PANEL);
         Emitter.instance.registerOnce(EVENT_NAME.ENEMY_TURN_PANEL_DONE, () => {
+            Emitter.instance.emit(EVENT_NAME.COUNT_DOWN_CLOCK,()=>{
+                Emitter.instance.emit(EVENT_NAME.CHANGE_SCENE_CLOCK);
+            });
             this.changeToMiniMap(this.mapEnemy);
             this.mapPlayer.active = true;
             this.mapEnemy.active = true;
@@ -148,11 +153,12 @@ cc.Class({
 
     onChangeEnemyScene() {
         cc.log("chuyen enemy");
-        Emitter.instance.registerOnce(EVENT_NAME.POSITION, (data) => {
+        this.callBackCheckPos = (data)=> {
             data.playerId = this.playerId;
             Emitter.instance.emit(EVENT_NAME.CHECK_POSITION, data);
             cc.log("playerId EnemyScene", data.playerId);
-        });
+        }
+        Emitter.instance.registerOnce(EVENT_NAME.POSITION,this.callBackCheckPos);
         cc.tween(this.node)
             .call(() => {})
             .delay(3)
@@ -167,6 +173,7 @@ cc.Class({
     },
 
     playAnimation(data) {
+        Emitter.instance.emit(EVENT_NAME.STOP_CLOCK)
         const currentScene = cc.director.getScene().children[0];
         let cannonBall = cc.instantiate(this.ballCannon);
         cannonBall.setParent(currentScene);
@@ -176,6 +183,10 @@ cc.Class({
     },
 
     restTurn() {
+        Emitter.instance.emit(EVENT_NAME.STOP_CLOCK);
+        Emitter.instance.emit(EVENT_NAME.COUNT_DOWN_CLOCK,()=>{
+            Emitter.instance.emit(EVENT_NAME.CHANGE_SCENE_CLOCK);
+        });
         if (this.fsm.state === "playerScene") {
             this.fsm.changePlayerScene();
             cc.log("reset");
@@ -187,7 +198,7 @@ cc.Class({
 
     changeScene(data) {
         cc.log("data trong change scene", data);
-
+        Emitter.instance.removeEvent(EVENT_NAME.POSITION, this.callBackCheckPos);
         let nowScene = this.fsm.state;
         if (nowScene === "playerScene" && data === true) {
             cc.log("đổi enemy");
@@ -199,6 +210,9 @@ cc.Class({
     },
 
     changeSceneShipFail() {
+        Emitter.instance.emit(EVENT_NAME.COUNT_DOWN_CLOCK,()=>{
+            Emitter.instance.emit(EVENT_NAME.CHANGE_SCENE_CLOCK);
+        });
         if (this.fsm.state === "playerScene") {
             this.shipEnemyCounter -= 1;
             if (this.shipEnemyCounter === 0) {
