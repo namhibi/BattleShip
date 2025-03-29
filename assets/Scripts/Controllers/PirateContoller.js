@@ -27,151 +27,72 @@ cc.Class({
             EVENT_NAME.SHIP_FAIL,
             this.changeStateShipFail.bind(this)
         );
+        Emitter.instance.registerEvent(
+            EVENT_NAME.LOAD_CURRENT_STATE,
+            this.onLoadGameStateState.bind(this)
+        );
+       this.messageCmp = this.node.children[0].children[0].getComponent(cc.Label);
+       this.bubbleNode = this.node.children[0];
+       this.node.active = false;
+    },
 
-        this.onAttack();
+    onLoadGameStateState(state){
+        this.currentState = state;
+        this.bubbleNode.scale = 0;
+        this.messageCmp.string = "";
     },
 
     onOverTime() {
-        let talkString = this.node.children[0].children[0].getComponent(
-            cc.Label
-        );
-        let arrayTalking = {
-            CB: "BOY IS OVER TIME",
-            YT: "YOURS TURN HAS FINISHED",
-        };
-        this.tweenTalking && this.tweenTalking.stop();
-        this.tweenTalking = cc.tween(talkString.node)
-            .call(() => {
-                talkString.string = arrayTalking.CB;
-            })
-            .delay(1)
-            .call(() => {
-                talkString.string = arrayTalking.YT;
-            })
-            .delay(1)
-            .call(() => {
+            let callbackAction = ()=>{
                 Emitter.instance.emit(EVENT_NAME.CHANGE_SCENE, true);
-            })
-            .call(() => {
-                this.onAttack();
-            })
-            .start();
-    },
-
-    onAttack() {
-        let talkString = this.node.children[0].children[0].getComponent(
-            cc.Label
-        );
-        talkString.string = "SHOOTING SHIP ENEMY";
+            }
+            this.loadMessage(MESSAGE[this.currentState].OVER_TIME,callbackAction);
     },
 
     onMissAttack() {
-        let talkString = this.node.children[0].children[0].getComponent(
-            cc.Label
-        );
-        let arrayTalking = {
-            CB: "CHICKEN BOYS",
-            YT: "YOURS TURN HAS FINISHED",
-        };
-        this.tweenTalking && this.tweenTalking.stop();
-        this.tweenTalking = cc.tween(talkString.node)
-            .call(() => {
-                talkString.string = arrayTalking.CB;
-            })
-            .delay(1)
-            .call(() => {
-                talkString.string = arrayTalking.YT;
-            })
-            .delay(1)
-            .call(() => {
+            let callbackAction = ()=>{
                 Emitter.instance.emit(EVENT_NAME.CHANGE_SCENE, true);
-            })
-            .call(() => {
-                this.onAttack();
-            })
-            .start();
+            }
+            this.loadMessage(MESSAGE[this.currentState].MISS_ATTACK,callbackAction);
     },
 
     onAttackToAttack() {
-        let talkString = this.node.children[0].children[0].getComponent(
-            cc.Label
-        );
-        let arrayTalking = {
-            GB: "GOOD BOYS",
-            HASHIT: "U HAS HIT ENEMY SHIP",
-            SA: "SHOOT AGAIN",
-        };
-        this.tweenTalking && this.tweenTalking.stop();
-        this.tweenTalking = cc.tween(talkString.node)
-            .call(() => {
-                talkString.string = arrayTalking.GB;
-            })
-            .delay(1)
-            .call(() => {
-                talkString.string = arrayTalking.HASHIT;
-            })
-            .delay(1)
-            .call(() => {
-                talkString.string = arrayTalking.SA;
+            let callbackAction = ()=>{
                 Emitter.instance.emit(EVENT_NAME.RESET_TURN);
-            })
-            .start();
+            }
+            this.loadMessage(MESSAGE[this.currentState].ATTACK,callbackAction);
     },
 
     onShipFail() {
         cc.log("pirate taking");
         Emitter.instance.emit(EVENT_NAME.PLAY_ANI_SHIP_FAIL);
         Emitter.instance.registerOnce(EVENT_NAME.DONE_CLIP_SHIP_FAIL, () => {
-            let talkString = this.node.children[0].children[0].getComponent(
-                cc.Label
-            );
-            let arrayTalking = {
-                GB: "GOOD BOYS",
-                SB: "ENEMY SHIP HAS FAILED",
-                GJ: "GOOD JOBS",
-                SA: "SHOOT AGAIN",
-            };
-            this.tweenTalking && this.tweenTalking.stop();
-            this.tweenTalking = cc.tween(talkString.node)
-                .call(() => {
-                    talkString.string = arrayTalking.GB;
-                })
-                .delay(1)
-                .call(() => {
-                    talkString.string = arrayTalking.SB;
-                })
-                .delay(2)
-                .call(() => {
-                    talkString.string = arrayTalking.GJ;
-                })
-                .delay(1)
-                .call(() => {
-                    talkString.string = arrayTalking.SA;
+                let callbackAction = ()=>{
                     Emitter.instance.emit(EVENT_NAME.SHIP_FAIL_CHECK);
-                })
-                .start();
+                }
+                this.loadMessage(MESSAGE[this.currentState].SHIP_FAIL,callbackAction);
         });
     },
 
     loadMessage(messageList, callback){
-        let messageCmp = this.node.children[0].children[0].getComponent(cc.Label);
+        this.bubbleNode.scale = 0;
+        cc.tween(this.bubbleNode)
+        .to(0.3,{scale:2.5})
+        .start();
         this.tweenTalking && this.tweenTalking.stop();
-        this.tweenTalking = cc.tween(talkString.node)
-        for(let index = 0; index < this.messageList.length; index ++){
-            if(index !=  this.messageList.length - 1){
-                this.tweenTalking
-                .call(() => {
-                    talkString.string = this.messageList[index];
-                })
-                .delay(1)
-            }else{
-                this.tweenTalking
-                .call(() => {
-                    talkString.string = this.messageList[index];
-                    callback && callback();
-                })
-            }
+        this.tweenTalking = cc.tween(this.messageCmp.node)
+        for(let index = 0; index < messageList.length; index ++){
+            this.tweenTalking
+            .call(() => {
+                this.messageCmp.string = messageList[index];
+            })
+            .delay(1)
         }
+        this.tweenTalking
+        .call(() => {
+            callback && callback();
+        })
+        .start();
     },
 
     changeStateShipFail() {

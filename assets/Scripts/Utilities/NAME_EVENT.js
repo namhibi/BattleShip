@@ -42,6 +42,8 @@ const eventName = {
     RECEIVE_RESULT: "receiveresult",
 
     RANDOM_SHIPS: "random-ships",
+
+    LOAD_CURRENT_STATE: "LOAD_CURRENT_GAME_STATE",
 };
 
 module.exports = eventName;

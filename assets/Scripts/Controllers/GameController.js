@@ -123,6 +123,7 @@ cc.Class({
 
     onChangePlayerScene() {
         cc.log("chuyen player");
+        Emitter.instance.emit(EVENT_NAME.LOAD_CURRENT_STATE,this.fsm.state)
         this.callBackCheckPos = (data)=> {
             data.playerId = this.enemyId;
             let spine = this.pirate.node.getComponent(sp.Skeleton);
@@ -153,6 +154,7 @@ cc.Class({
 
     onChangeEnemyScene() {
         cc.log("chuyen enemy");
+         Emitter.instance.emit(EVENT_NAME.LOAD_CURRENT_STATE,this.fsm.state);
         this.callBackCheckPos = (data)=> {
             data.playerId = this.playerId;
             Emitter.instance.emit(EVENT_NAME.CHECK_POSITION, data);
