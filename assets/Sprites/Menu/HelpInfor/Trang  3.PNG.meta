@@ -1,6 +1,6 @@
 {
   "ver": "2.3.3",
-  "uuid": "2dd2394c-c9e7-41c9-9f4f-cb14fe4aad64",
+  "uuid": "3f5254bc-0fa1-453f-a1d7-f89c08754296",
   "type": "sprite",
   "wrapMode": "clamp",
   "filterMode": "bilinear",
@@ -9,10 +9,10 @@
   "packable": true,
   "platformSettings": {},
   "subMetas": {
-    "Trang 5": {
+    "Trang  3": {
       "ver": "1.0.4",
-      "uuid": "e78d52e1-9b47-4992-ac7a-a754c2e8fe10",
-      "rawTextureUuid": "2dd2394c-c9e7-41c9-9f4f-cb14fe4aad64",
+      "uuid": "d4fb6bdd-7ac4-472b-a203-150ae137606e",
+      "rawTextureUuid": "3f5254bc-0fa1-453f-a1d7-f89c08754296",
       "trimType": "auto",
       "trimThreshold": 1,
       "rotated": false,
@@ -20,10 +20,10 @@
       "offsetY": 0,
       "trimX": 0,
       "trimY": 0,
-      "width": 2086,
-      "height": 1260,
-      "rawWidth": 2086,
-      "rawHeight": 1260,
+      "width": 1284,
+      "height": 721,
+      "rawWidth": 1284,
+      "rawHeight": 721,
       "borderTop": 0,
       "borderBottom": 0,
       "borderLeft": 0,

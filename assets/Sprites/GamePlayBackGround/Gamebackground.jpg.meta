@@ -1,6 +1,6 @@
 {
   "ver": "2.3.3",
-  "uuid": "6a6dee1a-cc9d-4e11-b3ce-0fb9dae7a098",
+  "uuid": "920afa07-35e4-4d61-9158-adb9d2d88082",
   "type": "sprite",
   "wrapMode": "clamp",
   "filterMode": "bilinear",
@@ -9,10 +9,10 @@
   "packable": true,
   "platformSettings": {},
   "subMetas": {
-    "Trang 3": {
+    "Gamebackground": {
       "ver": "1.0.4",
-      "uuid": "eafc4275-3c6e-4532-816e-3fe87be665dc",
-      "rawTextureUuid": "6a6dee1a-cc9d-4e11-b3ce-0fb9dae7a098",
+      "uuid": "ab740253-abef-4f02-85d1-aec6805e57a7",
+      "rawTextureUuid": "920afa07-35e4-4d61-9158-adb9d2d88082",
       "trimType": "auto",
       "trimThreshold": 1,
       "rotated": false,
@@ -20,10 +20,10 @@
       "offsetY": 0,
       "trimX": 0,
       "trimY": 0,
-      "width": 2088,
-      "height": 1264,
-      "rawWidth": 2088,
-      "rawHeight": 1264,
+      "width": 1460,
+      "height": 980,
+      "rawWidth": 1460,
+      "rawHeight": 980,
       "borderTop": 0,
       "borderBottom": 0,
       "borderLeft": 0,

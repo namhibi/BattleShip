@@ -11,6 +11,7 @@ cc.Class({
         mapPlayer: cc.Node,
         changeSceneNode: cc.Node,
         pirate: sp.Skeleton,
+        blockInput: cc.Node
     },
 
     onLoad() {
@@ -109,8 +110,10 @@ cc.Class({
         Emitter.instance.emit(EVENT_NAME.YOUR_TURN_PANEL);
         Emitter.instance.registerOnce(EVENT_NAME.YOUR_TURN_PANEL_DONE, () => {
             Emitter.instance.emit(EVENT_NAME.COUNT_DOWN_CLOCK,()=>{
+                this.blockInput.active = true;
                 Emitter.instance.emit(EVENT_NAME.CHANGE_SCENE_CLOCK);
             });
+            this.blockInput.active = false;
             this.mapEnemy.active = true;
             this.mapPlayer.active = true;
             this.pirate.node.active = true;
@@ -142,9 +145,11 @@ cc.Class({
         Emitter.instance.emit(EVENT_NAME.ENEMY_TURN_PANEL);
         Emitter.instance.registerOnce(EVENT_NAME.ENEMY_TURN_PANEL_DONE, () => {
             Emitter.instance.emit(EVENT_NAME.COUNT_DOWN_CLOCK,()=>{
+                this.blockInput.active = true;
                 Emitter.instance.emit(EVENT_NAME.CHANGE_SCENE_CLOCK);
             });
             this.changeToMiniMap(this.mapEnemy);
+            this.blockInput.active = false;
             this.mapPlayer.active = true;
             this.mapEnemy.active = true;
             this.pirate.node.active = true;
@@ -187,6 +192,7 @@ cc.Class({
     restTurn() {
         Emitter.instance.emit(EVENT_NAME.STOP_CLOCK);
         Emitter.instance.emit(EVENT_NAME.COUNT_DOWN_CLOCK,()=>{
+            this.blockInput.active = true;
             Emitter.instance.emit(EVENT_NAME.CHANGE_SCENE_CLOCK);
         });
         if (this.fsm.state === "playerScene") {
@@ -213,6 +219,7 @@ cc.Class({
 
     changeSceneShipFail() {
         Emitter.instance.emit(EVENT_NAME.COUNT_DOWN_CLOCK,()=>{
+            this.blockInput.active = true;
             Emitter.instance.emit(EVENT_NAME.CHANGE_SCENE_CLOCK);
         });
         if (this.fsm.state === "playerScene") {

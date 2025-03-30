@@ -27,7 +27,7 @@ cc.Class({
     },
 
     update(dt) {
-        this.setPercentLabel(Math.floor(percent.value));
+        // this.setPercentLabel(Math.floor(percent.value));
     },
 
     setPercentLabel(percent) {
